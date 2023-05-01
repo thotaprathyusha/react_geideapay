@@ -42,6 +42,7 @@ class GeideaApi {
     return new Promise((resolve, reject) => {
       processRequest(url, 'POST', payload, publicKey, apiPassword)
         .then((res) => {
+          console.log(res)
           if (
             res.detailedResponseCode != null &&
             res.detailedResponseCode === '000'
@@ -117,7 +118,7 @@ class GeideaApi {
           ? apiResponse.responseCode.toLowerCase()
           : null
       if (status === 'success' && code === '000') {
-        console.log("GeideaAPi payerauth",apiResponse.htmlBodyContent)
+        console.log(apiResponse.htmlBodyContent)
         let htmlBodyContent = apiResponse.htmlBodyContent.replace(
           'target="redirectTo3ds1Frame"',
           'target="_top"'
@@ -130,7 +131,7 @@ class GeideaApi {
           })
         }
       }
-      console.log('Geidea APi apiResponse ' + apiResponse)
+      console.log('apiResponse ' + apiResponse)
       return apiResponse
     }
     if (navigationProp == null) {

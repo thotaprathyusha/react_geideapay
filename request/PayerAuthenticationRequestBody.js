@@ -12,7 +12,6 @@ export default class PayerAuthenticationRequestBody {
   static billing$ = '_billing'
   static shipping$ = '_shipping'
   static customerEmail$ = '_customerEmail'
-  static phoneNumber$ = '_phoneNumber'
   static returnUrl$ = '_returnUrl'
   static paymentIntentId$ = '_paymentIntentId'
 
@@ -27,8 +26,6 @@ export default class PayerAuthenticationRequestBody {
     let shipping = opts && 'shipping' in opts ? opts.shipping : null
     let customerEmail =
       opts && 'customerEmail' in opts ? opts.customerEmail : null
-      let phoneNumber =
-      opts && 'phoneNumber' in opts ? opts.phoneNumber : null
     let returnUrl = 'https://returnurl.com'
     let paymentIntentId =
       opts && 'paymentIntentId' in opts ? opts.paymentIntentId : null
@@ -44,7 +41,6 @@ export default class PayerAuthenticationRequestBody {
     this.billing = billing
     this.shipping = shipping
     this.customerEmail = customerEmail
-    this.phoneNumber = phoneNumber
     this.returnUrl = returnUrl
     this.paymentIntentId = paymentIntentId
   }
@@ -114,12 +110,6 @@ export default class PayerAuthenticationRequestBody {
   set customerEmail(value) {
     this[PayerAuthenticationRequestBody.customerEmail$] = value
   }
-  get phoneNumber() {
-    return this[PayerAuthenticationRequestBody.phoneNumber$]
-  }
-  set phoneNumber(value) {
-    this[PayerAuthenticationRequestBody.phoneNumber$] = value
-  }
   get returnUrl() {
     return this[PayerAuthenticationRequestBody.returnUrl$]
   }
@@ -163,9 +153,6 @@ export default class PayerAuthenticationRequestBody {
     }
     if (this.customerEmail != null) {
       params[BaseRequestBody.fieldCustomerEmail] = this.customerEmail
-    }
-    if (this.phoneNumber != null) {
-      params[BaseRequestBody.fieldPhoneNumber] = this.phoneNumber
     }
     if (this.paymentIntentId != null) {
       params[BaseRequestBody.fieldPaymentIntentId] = this.paymentIntentId

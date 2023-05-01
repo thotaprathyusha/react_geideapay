@@ -19,7 +19,7 @@ class ThreeDSModal extends ThreeDS {
     const { onRequestClose } = this.props
     console.log('onLoadProgress')
     //your code goes here
-    console.log("3dsModal.js handle3Ds",nativeEvent)
+    console.log(nativeEvent)
     if(nativeEvent.url.includes ('callback') && nativeEvent.progress === 1) {
       this.state.count++
       console.log(this.state.count)

@@ -12,12 +12,10 @@ import OrderResponse from '../response/OrderApiResponse'
 import { formatCurrencyAmountLabel } from '../utils'
 import ThreeDSScreenModal from './ThreeDSModal'
 import Address from 'react_geideapay/models/adress';
-
 let returnUrl = 'https://returnurl.com';
 class CheckoutLogic extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.state = Object.assign({}, this._calculateState(props), {
       loading: false,
       creditCardFormValid: false,
@@ -34,7 +32,7 @@ class CheckoutLogic extends Component {
       phoneNumber: null,
       showSuccessReceipt: false,
       showFailureReceipt:false,
-      callbackUrl: 'https://webhook.site/2b43b8ae-e4c8-4b36-9d84-ea99ecfa8b79',
+      callbackUrl: 'https://returnurl.com',
     });
     this.type = 'modal'
     if (props.route != null && props.route.params != null) {
@@ -83,13 +81,13 @@ class CheckoutLogic extends Component {
     if (props != null && props.phoneNumber != null) {
       phoneNumber = props.phoneNumber
     }
-    var callbackUrl = 'https://webhook.site/2b43b8ae-e4c8-4b36-9d84-ea99ecfa8b79'
+    var callbackUrl = 'https://returnurl.com'
     if (props != null && props.route != null && props.route.params != null) {
       shippingAddress = this.props.route.params.shippingAddress
       billingAddress = this.props.route.params.billingAddress
       customerEmail = this.props.route.params.customerEmail
       phoneNumber = this.props.route.params.phoneNumber
-      callbackUrl = this.props.route.params.callbackUrl == '' ? 'https://webhook.site/2b43b8ae-e4c8-4b36-9d84-ea99ecfa8b79' : this.props.route.params.callbackUrl
+      callbackUrl = this.props.route.params.callbackUrl == '' ? 'https://returnurl.com' : this.props.route.params.callbackUrl
     }
     return {
       loading: false,
@@ -163,7 +161,7 @@ class CheckoutLogic extends Component {
           paymentOperation
         )
           .then((payerAuthenticationResponse) => {
-            console.log("payerAuthenticationResponse in checkoutlogic",payerAuthenticationResponse)
+            //console.log(payerAuthenticationResponse)
             let response = AuthenticationApiResponse.fromJson(
               payerAuthenticationResponse
             )
@@ -239,7 +237,7 @@ class CheckoutLogic extends Component {
           phoneNumber:phoneNumber,
         }
       )
-    console.log("initiate authen checkoutlogic",initiateAuthenticationRequestBody.paramsMap())
+      console.log(initiateAuthenticationRequestBody.paramsMap())
 
     return GeideaApi.initiateAuthentication(
       initiateAuthenticationRequestBody,
@@ -280,7 +278,7 @@ class CheckoutLogic extends Component {
         paymentOperation: paymentOperation,
       },
     )
-    console.log("payer auth checkoutlogic",payerAuthenticationRequestBody.paramsMap())
+    console.log(payerAuthenticationRequestBody.paramsMap())
 
     return GeideaApi.payerAuthentication(
       payerAuthenticationRequestBody,
@@ -410,7 +408,7 @@ class CheckoutLogic extends Component {
   }
   _renderThreeDSecure() {
     const { threeDSecureModalVisible, htmlBodyContent } = this.state
-    console.log("render 3DSecure checkoutlogic",htmlBodyContent)
+    console.log(htmlBodyContent)
     return (
       <ThreeDSScreenModal
         visible={threeDSecureModalVisible}

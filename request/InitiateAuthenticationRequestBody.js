@@ -9,7 +9,6 @@ export default class InitiateAuthenticationRequestBody {
   static billing$ = '_billing'
   static shipping$ = '_shipping'
   static customerEmail$ = '_customerEmail'
-  static phoneNumber$ = '_phoneNumber'
   static paymentIntentId$ = '_paymentIntentId'
   static amount$ = '_amount'
   static currency$ = '_currency'
@@ -27,8 +26,6 @@ export default class InitiateAuthenticationRequestBody {
     let _shipping = opts && 'shipping' in opts ? opts.shipping : null
     let _customerEmail =
       opts && 'customerEmail' in opts ? opts.customerEmail : null
-      let _phoneNumber =
-      opts && 'phoneNumber' in opts ? opts.phoneNumber : null
     let _paymentIntentId =
       opts && 'paymentIntentId' in opts ? opts.paymentIntentId : null
     this.amount = _amount
@@ -42,7 +39,6 @@ export default class InitiateAuthenticationRequestBody {
     this.billing = _billing
     this.shipping = _shipping
     this.customerEmail = _customerEmail
-    this.phoneNumber = _phoneNumber
     this.paymentIntentId = _paymentIntentId
   }
   get amount() {
@@ -105,12 +101,6 @@ export default class InitiateAuthenticationRequestBody {
   set customerEmail(value) {
     this[InitiateAuthenticationRequestBody.customerEmail$] = value
   }
-  get phoneNumber() {
-    return this[InitiateAuthenticationRequestBody.phoneNumber$]
-  }
-  set phoneNumber(value) {
-    this[InitiateAuthenticationRequestBody.phoneNumber$] = value
-  }
   get paymentIntentId() {
     return this[InitiateAuthenticationRequestBody.paymentIntentId$]
   }
@@ -147,9 +137,6 @@ export default class InitiateAuthenticationRequestBody {
     }
     if (this.customerEmail != null) {
       params[BaseRequestBody.fieldCustomerEmail] = this.customerEmail
-    }
-    if (this.phoneNumber != null) {
-      params[BaseRequestBody.fieldPhoneNumber] = this.phoneNumber
     }
     if (this.paymentIntentId != null) {
       params[BaseRequestBody.fieldPaymentIntentId] = this.paymentIntentId

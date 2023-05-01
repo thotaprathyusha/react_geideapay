@@ -22,7 +22,6 @@ export default class Order {
   static merchantReferenceId$ = 'Order.merchantReferenceId'
   static callbackUrl$ = 'Order.callbackUrl'
   static customerEmail$ = 'Order.customerEmail'
-  static phoneNumber$ = 'Order.phoneNumber'
   static returnUrl$ = 'Order.returnUrl'
   static tokenId$ = 'Order.tokenId'
   static initiatedBy$ = 'Order.initiatedBy'
@@ -84,8 +83,6 @@ export default class Order {
     let callbackUrl = opts && 'callbackUrl' in opts ? opts.callbackUrl : null
     let customerEmail =
       opts && 'customerEmail' in opts ? opts.customerEmail : null
-      let phoneNumber =
-      opts && 'phoneNumber' in opts ? opts.phoneNumber : null
     let returnUrl = 'https://returnurl.com'
     let tokenId = opts && 'tokenId' in opts ? opts.tokenId : null
     let initiatedBy = opts && 'initiatedBy' in opts ? opts.initiatedBy : null
@@ -151,7 +148,6 @@ export default class Order {
     this.merchantReferenceId = merchantReferenceId
     this.callbackUrl = callbackUrl
     this.customerEmail = customerEmail
-    this.phoneNumber = phoneNumber
     this.returnUrl = returnUrl
     this.tokenId = tokenId
     this.initiatedBy = initiatedBy
@@ -292,14 +288,8 @@ export default class Order {
   get customerEmail() {
     return this[Order.customerEmail$]
   }
-  get phoneNumber() {
-    return this[Order.phoneNumber$]
-  }
   set customerEmail(value) {
     this[Order.customerEmail$] = value
-  }
-  set phoneNumber(value) {
-    this[Order.phoneNumber$] = value
   }
   get returnUrl() {
     return this[Order.returnUrl$]
@@ -501,7 +491,6 @@ export default class Order {
       map && 'merchantReferenceId' in map ? map.merchantReferenceId : null
     let callbackUrl = map && 'callbackUrl' in map ? map.callbackUrl : null
     let customerEmail = map && 'customerEmail' in map ? map.customerEmail : null
-    let phoneNumber = map && 'phoneNumber' in map ? map.phoneNumber : null
     let returnUrl = map && 'returnUrl' in map ? map.returnUrl : null
     let tokenId = map && 'tokenId' in map ? map.tokenId : null
     let initiatedBy = map && 'initiatedBy' in map ? map.initiatedBy : null
@@ -566,7 +555,6 @@ export default class Order {
       merchantReferenceId: merchantReferenceId,
       callbackUrl: callbackUrl,
       customerEmail: customerEmail,
-      phoneNumber:phoneNumber,
       returnUrl: returnUrl,
       tokenId: tokenId,
       initiatedBy: initiatedBy,

@@ -74,9 +74,6 @@ export default class BaseRequestBody {
   /*base_request_body.BaseRequestBody.fieldCustomerEmail*/ static get fieldCustomerEmail() {
     return 'customerEmail'
   }
-  /*base_request_body.BaseRequestBody.fieldPhoneNumber*/ static get fieldPhoneNumber() {
-    return 'phoneNumber'
-  }
   /*base_request_body.BaseRequestBody.fieldPaymentIntentId*/ static get fieldPaymentIntentId() {
     return 'paymentIntentId'
   }
